@@ -11,13 +11,13 @@ interface AdressProps{
 interface UserProps {
   firstName: string;
   lastName: string;
-  adress: AdressProps;
+  address: AdressProps;
   phone: string;
 }
 
 class CreateUserServices {
-  public async execute({ firstName, lastName, adress, phone }: UserProps) {
-    const user = User.create({firstName, lastName, adress, phone})
+  public async execute({ firstName, lastName, address, phone }: UserProps) {
+    const user = User.create({firstName, lastName, address, phone})
 
     return user;
   }

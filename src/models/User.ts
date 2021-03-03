@@ -13,13 +13,13 @@ const Scheme = new mongoose.Schema({
     required: true,
   },
 
-  address: [{
+  address: {
     state: String,
     city: String,
     neighborhood: String,
     street: String, 
     number: String
-  }],
+  },
 
   phone:{
     type: String,

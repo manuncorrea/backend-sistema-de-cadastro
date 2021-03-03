@@ -14,12 +14,12 @@ usersRoutes.get('/', async(request: Request, response: Response) => {
 
 //Criando cliente no banco de dados
 usersRoutes.post('/create', async(request: Request, response: Response) => {
-  const { firstName, lastName, adress, phone } = request.body;
+  const { firstName, lastName, address, phone } = request.body;
 
   try {
     const createUser = new CreateUserService()
 
-    const user = await createUser.execute({ firstName, lastName, adress, phone })
+    const user = await createUser.execute({ firstName, lastName, address, phone })
 
     return response.status(200).json({ user });
   } catch ( err ) {
