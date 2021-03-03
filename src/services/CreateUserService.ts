@@ -1,4 +1,3 @@
-import { isValidObjectId } from 'mongoose';
 import User from '../models/User';
 
 interface AdressProps{
@@ -18,19 +17,11 @@ interface UserProps {
 
 class CreateUserServices {
   public async execute({ firstName, lastName, adress, phone }: UserProps) {
-    const usersRepository = isValidObjectId(User);
-
-    const user = usersRepository.valueOf({
-      firstName,
-      lastName,
-      adress,
-      phone,
-    });
-
-    await usersRepository.save(user);
+    const user = User.create({firstName, lastName, adress, phone})
 
     return user;
   }
+   
 }
 
 export default CreateUserServices;

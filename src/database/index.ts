@@ -1,3 +1,4 @@
+// Criando a conezão com banco de dados
 import mongoose from 'mongoose';
 
 class Database {

@@ -4,13 +4,15 @@ import User from '../models/User';
 import CreateUserService from '../services/CreateUserService';
 
 const usersRoutes = Router();
-  
+
+//Listando Clientes cadastrados
 usersRoutes.get('/', async(request: Request, response: Response) => {
   const users = await User.find()
 
   return response.status(200).json({ users });
 });
 
+//Criando cliente no banco de dados
 usersRoutes.post('/create', async(request: Request, response: Response) => {
   const { firstName, lastName, adress, phone } = request.body;
 

@@ -1,5 +1,7 @@
 import mongoose from 'mongoose';
-
+/**
+ * Models para criação dos clientes no banco de dodos
+ */
 const Scheme = new mongoose.Schema({
   firstName: {
     type: String,
