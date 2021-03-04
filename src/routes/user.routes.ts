@@ -2,6 +2,8 @@ import { Router, Request, Response } from 'express';
 import User from '../models/User';
 
 import CreateUserService from '../services/CreateUserService';
+import DeleteUserService from '../services/DeleteUserService';
+import UpdateUserService from '../services/UpdateUserService';
 
 const usersRoutes = Router();
 
@@ -26,5 +28,37 @@ usersRoutes.post('/create', async(request: Request, response: Response) => {
     return response.status(400).json({ error: err.message })
   }
 });
+
+//Deletando rotas
+usersRoutes.delete('/:id', async (request: Request, response: Response) => {
+  const { id } = request.params
+
+  try {
+    const deleteUser = new DeleteUserService()
+
+    await deleteUser.execute({ id })
+
+    return response.status(200).json();
+  } catch (err) {
+    return response.status(400).json({ error: err.message })
+  }
+});
+
+//Update de cliente no banco de dados
+usersRoutes.put('/:id', async (request: Request, response: Response) => {
+  const { id } = request.params
+  const { firstName, lastName, address, phone } = request.body;
+
+  try {
+    const updateUser = new UpdateUserService()
+
+    const user = await updateUser.execute({ id, firstName, lastName, address, phone })
+
+    return response.status(200).json({ user });
+  } catch (err) {
+    return response.status(400).json({ error: err.message })
+  }
+});
+
 
 export default usersRoutes;

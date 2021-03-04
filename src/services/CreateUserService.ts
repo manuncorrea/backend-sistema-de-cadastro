@@ -17,7 +17,7 @@ interface UserProps {
 
 class CreateUserServices {
   public async execute({ firstName, lastName, address, phone }: UserProps) {
-    const user = User.create({firstName, lastName, address, phone})
+    const user = await User.create({ firstName, lastName, address, phone})
 
     return user;
   }
