@@ -1,5 +1,12 @@
 import User from '../models/User';
 
+interface UserProps {
+  firstName: string;
+  lastName: string;
+  address: AdressProps;
+  phone: string;
+}
+
 interface AdressProps{
   state: string;
   city: string;
@@ -8,12 +15,6 @@ interface AdressProps{
   number: string;
 }
 
-interface UserProps {
-  firstName: string;
-  lastName: string;
-  address: AdressProps;
-  phone: string;
-}
 
 class CreateUserServices {
   public async execute({ firstName, lastName, address, phone }: UserProps) {

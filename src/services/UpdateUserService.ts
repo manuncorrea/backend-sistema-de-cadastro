@@ -1,13 +1,6 @@
 import { isValidObjectId } from 'mongoose';
 import User from '../models/User';
 
-interface AdressProps{
-  state: string;
-  city: string;
-  neighborhood: string;
-  street: string;
-  number: string;
-}
 
 interface UserProps {
   id: string
@@ -17,6 +10,13 @@ interface UserProps {
   phone: string;
 }
 
+interface AdressProps{
+  state: string;
+  city: string;
+  neighborhood: string;
+  street: string;
+  number: string;
+}
 
 
 class UpdateUserService {
@@ -29,7 +29,8 @@ class UpdateUserService {
 
     if(!userExists) throw new Error('User not found' )
 
-    const user = await User.findByIdAndUpdate(id, { firstName, lastName, address, phone }, { new: true, useFindAndModify: false })
+    const user = await User.findByIdAndUpdate(id, { firstName, lastName, address, phone })
+    
 
     return user
   }
