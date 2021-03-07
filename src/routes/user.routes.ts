@@ -7,9 +7,17 @@ import UpdateUserService from '../services/UpdateUserService';
 
 const usersRoutes = Router();
 
-//Listando Clientes cadastrados
+//Listando todos Clientes cadastrados
 usersRoutes.get('/', async(request: Request, response: Response) => {
   const users = await User.find()
+
+  return response.status(200).json({ users });
+});
+
+//Listando apenas um cliente cadastrado
+usersRoutes.get('/:_id', async(request: Request, response: Response) => {
+  const {_id} = request.params
+  const users = await User.findOne({ _id });
 
   return response.status(200).json({ users });
 });
